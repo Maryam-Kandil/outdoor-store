@@ -1,9 +1,8 @@
 const express = require('express');
-
 const productsRouter = express.Router();
-
 const pool = require('../db');
 
+// Get all products
 productsRouter.get('/', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM products');
@@ -14,6 +13,7 @@ productsRouter.get('/', async (req, res) => {
     }
 });
 
+// Get a product by ID with its category
 productsRouter.get('/:id', async (req, res) => {
     const id = req.params.id;
 

@@ -1,9 +1,8 @@
 const express = require('express');
-
 const categoriesRouter = express.Router();
-
 const pool = require('../db');
 
+// Get all categories
 categoriesRouter.get('/', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM categories');
@@ -14,7 +13,7 @@ categoriesRouter.get('/', async (req, res) => {
     }
 });
 
-
+// Get all products belonging to a category
 categoriesRouter.get('/:id/products', async (req, res) => {
     const id = req.params.id;
 

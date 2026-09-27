@@ -1,9 +1,8 @@
 const express = require('express');
-
 const usersRouter = express.Router();
-
 const pool = require('../db');
 
+// Get all users
 usersRouter.get('/', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM users');
@@ -16,7 +15,7 @@ usersRouter.get('/', async (req, res) => {
     }
 });
 
-
+// Create a new user
 usersRouter.post('/', async (req, res) => {
     const { first_name, last_name, email, phone } = req.body;
 
@@ -38,6 +37,5 @@ usersRouter.post('/', async (req, res) => {
         });
     }
 });
-
 
 module.exports = usersRouter;
